@@ -19,11 +19,11 @@ class Requester:
     def __last_matches_full_url(self, puuid, count)
         return f'{self.BASE_URL}/{self.MATCH_PATH}/by-puuid/{puuid}/ids?start=0&count={count}'
     
-    def __match_details_full_url(self, matchId):
-        return f'{self.BASE_URL}/{self.MATCH_PATH}/{matchId}'
+    def __match_details_full_url(self, match_id):
+        return f'{self.BASE_URL}/{self.MATCH_PATH}/{match_id}'
     
-    def __match_stats_full_url(self, matchId):
-        return self.__match_details_full_url(matchId) + '/timeline'
+    def __match_stats_full_url(self, match_id):
+        return self.__match_details_full_url(match_id) + '/timeline'
 
     def __summoner_account_info_url(self, puuid):
         return f'{self.BASE_SUMMONER_URL}/{self.SUMMONER_PATH}/by-puuid/{puuid}'
@@ -44,12 +44,12 @@ class Requester:
         url = self.__last_matches_full_url(puuid, count)
         return self.__league_api_request(url)
     
-    def _get_match_details(self, matchId):
-        url = self.__match_details_full_url(matchId)
+    def _get_match_details(self, match_id):
+        url = self.__match_details_full_url(match_id)
         return self.__league_api_request(url)
     
-    def _get_stats_full_url(matchId):
-        url = self.__match_stats_full_url(matchId)
+    def _get_stats(match_id):
+        url = self.__match_stats_full_url(match_id)
         return self.__league_api_request(url)
 
     def _get_summoner_account_info(self, puuid):
